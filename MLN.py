@@ -81,8 +81,7 @@ test_data['R'] = std.fit_transform(test_data[['R']])
 test_data['theta'] = std.fit_transform(test_data[['theta']])
 
 # Set up and train the MLP classifier
-mln = RandomForestClassifier(random_state=42, n_estimators=100, verbose=2, min_samples_split=randint(2, 20), min_samples_leaf=randint(1, 20),
-                             max_depth=5)
+mln = MLPClassifier(hidden_layer_sizes=128, alpha=.00005)
 mln.fit(x_train, y_train)
 
 test_data = test_data.drop(['Id', 'Dates', 'Address'], axis=1)
